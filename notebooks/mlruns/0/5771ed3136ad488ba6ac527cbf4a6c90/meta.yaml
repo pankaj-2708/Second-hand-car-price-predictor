@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/notebooks/mlruns/0/5771ed3136ad488ba6ac527cbf4a6c90/artifacts
+end_time: null
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 5771ed3136ad488ba6ac527cbf4a6c90
+run_name: bittersweet-elk-31
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1754844853318
+status: 1
+tags: []
+user_id: panka

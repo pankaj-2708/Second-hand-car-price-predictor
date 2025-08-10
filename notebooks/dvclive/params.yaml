@@ -1,0 +1,6 @@
+model: gradient_boosting
+n_estimators: 128
+max_depth: 5
+lr: 0.4032529036043827
+criterion: friedman_mse
+loss: squared_error
