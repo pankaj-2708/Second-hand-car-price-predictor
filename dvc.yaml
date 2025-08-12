@@ -1,0 +1,20 @@
+stages:
+  cleaning:
+    cmd: .\second_hand_car_price_prediction\0_cleaning.py
+    deps:
+    - .\second_hand_car_price_prediction\0_cleaning.py
+    params:
+    - cleaning.min_rto_count
+    - cleaning.min_model_count
+    outs:
+    - .\data\processed\
+
+  dataset:
+    cmd: python .\second_hand_car_price_prediction\1_dataset.py
+    deps:
+    - .\second_hand_car_price_prediction\1_dataset.py
+    params:
+    - dataset.test_size
+    - dataset.random_state
+    outs:
+    - .\data\train_test_split\

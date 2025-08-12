@@ -1,0 +1,7 @@
+dataset:
+  test_size: 0.1
+  random_state: 42
+
+cleaning:
+  min_rto_count: 21
+  min_model_count: 10
