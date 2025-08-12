@@ -5,3 +5,7 @@ dataset:
 cleaning:
   min_rto_count: 21
   min_model_count: 10
+
+transformation:
+  discretize: True
+  standardise: True

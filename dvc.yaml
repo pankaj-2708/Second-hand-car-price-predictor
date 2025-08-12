@@ -7,14 +7,26 @@ stages:
     - cleaning.min_rto_count
     - cleaning.min_model_count
     outs:
-    - .\data\processed\
+    - .\data\processed
+
+  transformation:
+    cmd: python .\second_hand_car_price_prediction\1_transformation.py
+    deps:
+    - .\second_hand_car_price_prediction\1_transformation.py
+    params:
+    - dataset.discretize
+    - dataset.standardise
+    outs:
+    - .\data\processed
+
 
   dataset:
-    cmd: python .\second_hand_car_price_prediction\1_dataset.py
+    cmd: python .\second_hand_car_price_prediction\2_dataset.py
     deps:
-    - .\second_hand_car_price_prediction\1_dataset.py
+    - .\second_hand_car_price_prediction\2_dataset.py
+
     params:
     - dataset.test_size
     - dataset.random_state
     outs:
-    - .\data\train_test_split\
+    - .\data\train_test_split
