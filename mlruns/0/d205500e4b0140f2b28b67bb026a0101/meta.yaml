@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/d205500e4b0140f2b28b67bb026a0101/artifacts
+end_time: 1755024864460
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: d205500e4b0140f2b28b67bb026a0101
+run_name: random_forest
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755024864418
+status: 3
+tags: []
+user_id: panka

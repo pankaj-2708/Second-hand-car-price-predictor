@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/2483cf45c15e4eeebb7788ffd2bcb14d/artifacts
+end_time: 1755024870185
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 2483cf45c15e4eeebb7788ffd2bcb14d
+run_name: gradient_boosting
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755024870131
+status: 3
+tags: []
+user_id: panka

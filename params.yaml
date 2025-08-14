@@ -9,3 +9,9 @@ cleaning:
 transformation:
   discretize: True
   standardise: True
+
+model:
+  try_model: False
+  tune_gradient_boosting: True
+  tune_random_forest: True
+  tune_XGBoost: True

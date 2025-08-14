@@ -9,7 +9,9 @@ from sklearn.preprocessing import OneHotEncoder
 from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import KBinsDiscretizer
 import yaml
+import warnings
 
+warnings.filterwarnings("ignore")
 
 def load_data(file_path):
     return pd.read_csv(file_path)
@@ -19,9 +21,12 @@ def select_random(df):
     return df.sample(1000, random_state=42)
 
 
-def apply_transformation(df, desc, std):
+def apply_transformation(df, desc, std,output_path):
+    
+    path_=str(output_path / "pipeline_training.csv")
+    df.to_csv(path_,index=False)
     y = df[["vehical_price_in_lakh_inr"]]
-    df.drop(columns="vehical_price_in_lakh_inr", axis=1, inplace=True)
+    df.drop(columns=["vehical_price_in_lakh_inr",'Transmission .1'], axis=1, inplace=True)
     cat_columns = ["Insurance ", "Fuel Type ", "Transmission "]
     other_cols = []
     to_norm = [
@@ -89,7 +94,7 @@ def main():
     curr_dir = pathlib.Path(__file__)
     home_dir = curr_dir.parent.parent
     data_path = home_dir / "data" / "processed" / "cleaned.csv"
-    output_path = home_dir / "data" / "processed"
+    output_path = home_dir / "data" / "transformed"
     params = None
     with open(home_dir / "params.yaml", "r") as f:
         params = yaml.safe_load(f)["transformation"]
@@ -98,7 +103,7 @@ def main():
     df = load_data(data_path)
 
     output_path.mkdir(parents=True, exist_ok=True)
-    df = apply_transformation(output_path, params["discretize"], params["standardise"])
+    df = apply_transformation(df, params["discretize"], params["standardise"],output_path)
     save_data(df, output_path)
 
 

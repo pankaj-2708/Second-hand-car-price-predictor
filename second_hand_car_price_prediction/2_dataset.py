@@ -2,6 +2,9 @@ import pathlib
 from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
+import warnings
+
+warnings.filterwarnings("ignore")
 import yaml
 
 
@@ -27,11 +30,11 @@ def main():
     with open(home_dir / "params.yaml", "r") as f:
         params = yaml.safe_load(f)["dataset"]
 
-    data_path = home_dir / "data" / "processed" / "finalised.csv"
+    data_path = home_dir / "data" / "transformed" / "finalised.csv"
     output_path = home_dir / "data" / "train_test_split"
 
     data = load_data(data_path)
-    train, test = None
+    train, test = None,None
     try:
         train, test = split(data, params["test_size"], params["random_state"])
     except KeyError:

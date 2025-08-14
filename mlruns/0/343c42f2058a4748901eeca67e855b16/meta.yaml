@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/343c42f2058a4748901eeca67e855b16/artifacts
+end_time: 1755088757248
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 343c42f2058a4748901eeca67e855b16
+run_name: brawny-gull-850
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755088757067
+status: 4
+tags: []
+user_id: panka

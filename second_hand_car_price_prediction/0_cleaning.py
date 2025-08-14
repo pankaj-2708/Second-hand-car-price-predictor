@@ -294,21 +294,21 @@ def clean_data(output_path, min_rto_count, min_model_count):
             "Ownership ",
             "company_name",
             "model_detail",
+            'vehical_name'
         ],
         axis=1,
         inplace=True,
     )
 
 
-def save_data(df, output_path):
+def save_data(output_path):
     df.to_csv(output_path / "cleaned.csv", index=False)
 
 
 def main():
     curr_dir = pathlib.Path(__file__)
     home_dir = curr_dir.parent.parent
-    # print("i am a man")
-    # print(home_dir)
+
     data_path = home_dir / "data" / "raw" / "car_details.csv"
     output_path = home_dir / "data" / "processed"
     params = None
@@ -319,8 +319,8 @@ def main():
     df = load_data(data_path)
 
     output_path.mkdir(parents=True, exist_ok=True)
-    df = clean_data(output_path, params["min_rto_count"], params["min_model_count"])
-    save_data(df, output_path)
+    clean_data(output_path, params["min_rto_count"], params["min_model_count"])
+    save_data(output_path)
 
 
 if __name__ == "__main__":

@@ -1,23 +1,23 @@
 stages:
   cleaning:
-    cmd: .\second_hand_car_price_prediction\0_cleaning.py
+    cmd: python .\second_hand_car_price_prediction\0_cleaning.py
     deps:
     - .\second_hand_car_price_prediction\0_cleaning.py
     params:
     - cleaning.min_rto_count
     - cleaning.min_model_count
     outs:
-    - .\data\processed
+    - .\data\processed\
 
   transformation:
     cmd: python .\second_hand_car_price_prediction\1_transformation.py
     deps:
     - .\second_hand_car_price_prediction\1_transformation.py
     params:
-    - dataset.discretize
-    - dataset.standardise
+    - transformation.discretize
+    - transformation.standardise
     outs:
-    - .\data\processed
+    - .\data\transformed\
 
 
   dataset:
@@ -29,4 +29,22 @@ stages:
     - dataset.test_size
     - dataset.random_state
     outs:
-    - .\data\train_test_split
+    - .\data\train_test_split\
+
+  model:
+    cmd: python .\second_hand_car_price_prediction\3_model.py
+    deps:
+    - .\second_hand_car_price_prediction\3_model.py
+
+    params:
+    - model.try_model
+    - model.tune_gradient_boosting
+    - model.tune_random_forest
+    - model.tune_XGBoost
+params:
+- dvclive/params.yaml
+metrics:
+- dvclive/metrics.json
+plots:
+- dvclive/plots/metrics:
+    x: step

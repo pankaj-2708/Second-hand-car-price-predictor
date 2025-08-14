@@ -1,0 +1,63 @@
+schema: '2.0'
+stages:
+  cleaning:
+    cmd: python .\second_hand_car_price_prediction\0_cleaning.py
+    deps:
+    - path: .\second_hand_car_price_prediction\0_cleaning.py
+      hash: md5
+      md5: 1c5bf343e26004e5879fe27e4ac30ea1
+      size: 10757
+    params:
+      params.yaml:
+        cleaning.min_model_count: 10
+        cleaning.min_rto_count: 21
+    outs:
+    - path: .\data\processed\
+      hash: md5
+      md5: db3fb9cf8254386b92545a0fc620e532.dir
+      size: 7971971
+      nfiles: 5
+  transformation:
+    cmd: python .\second_hand_car_price_prediction\1_transformation.py
+    deps:
+    - path: .\second_hand_car_price_prediction\1_transformation.py
+      hash: md5
+      md5: 7dde3826696d51dd00a80bb47c35d17f
+      size: 3329
+    params:
+      params.yaml:
+        transformation.discretize: true
+        transformation.standardise: true
+    outs:
+    - path: .\data\transformed\
+      hash: md5
+      md5: 95b04c01e3e975afc8b4b5ca79739620.dir
+      size: 16868045
+      nfiles: 1
+  dataset:
+    cmd: python .\second_hand_car_price_prediction\2_dataset.py
+    deps:
+    - path: .\second_hand_car_price_prediction\2_dataset.py
+      hash: md5
+      md5: 74e57ab632822dc77800bfb75c18fc7d
+      size: 1281
+    params:
+      params.yaml:
+        dataset.random_state: 42
+        dataset.test_size: 0.1
+    outs:
+    - path: .\data\train_test_split\
+      hash: md5
+      md5: d4635ea9757865cd1ce02bdaa7c72de6.dir
+      size: 16827849
+      nfiles: 2
+  model:
+    cmd: python .\second_hand_car_price_prediction\3_model.py
+    deps:
+    - path: .\second_hand_car_price_prediction\3_model.py
+      hash: md5
+      md5: f4aea2af8153afa19ec860fd75f945ba
+      size: 1501
+    params:
+      params.yaml:
+        model.try_model: true
