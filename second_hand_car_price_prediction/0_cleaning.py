@@ -117,7 +117,7 @@ def transform_owner(txt):
     return d[txt.replace("Owner", "").strip()]
 
 
-def clean_data(output_path, min_rto_count, min_model_count):
+def clean_data(output_path):
 
     # registration year and vehical_name
     df.loc[df["Registration Year "].isnull(), "Registration Year "] = (
@@ -128,14 +128,10 @@ def clean_data(output_path, min_rto_count, min_model_count):
     df["Registration Year "] = df["Registration Year "].apply(lambda x: int(x.strip().split()[-1]))
     df["company_name"] = df["vehical_name"].apply(lambda x: x.split(" ")[1])
     df["model_detail"] = df["vehical_name"].apply(lambda x: " ".join(x.split(" ")[2:]))
-    df["Registration age"] = pd.to_datetime(df["Registration Year "], format="%Y").apply(
-        lambda x: round((datetime.now().date() - x.date()).days / 365, 2)
-    )
+   
     df.dropna(subset="Year of Manufacture ", inplace=True)
     df["Year of Manufacture "] = df["Year of Manufacture "].apply(lambda x: int(x))
-    df["Year of Manufacture age"] = pd.to_datetime(df["Year of Manufacture "], format="%Y").apply(
-        lambda x: round((datetime.now().date() - x.date()).days / 365, 2)
-    )
+    
 
     # insurance
     df["Insurance "] = np.where(df["Insurance "] == "-", "No Insurance", df["Insurance "])
@@ -147,7 +143,7 @@ def clean_data(output_path, min_rto_count, min_model_count):
     df["Kms Driven "] = df["Kms Driven "].apply(
         lambda x: int(x.replace(",", "").strip().split(" ")[0])
     )
-    df["Kms Driven in 1000 km"] = df["Kms Driven "] / 1000
+    
 
     # engine displacement
     df["Engine Displacement "] = df["Engine Displacement "].fillna("-1")
@@ -203,22 +199,7 @@ def clean_data(output_path, min_rto_count, min_model_count):
 
     # RTO
     df["RTO "] = df["RTO "].fillna("Others")
-    val_cnt = df["RTO "].value_counts()
-    for val, ind in zip(val_cnt.values, val_cnt.index):
-        if val < min_rto_count:
-            val_cnt.loc["Others"] += val
-            val_cnt.drop(ind, inplace=True)
-
-    # for streamlit webapp
-    df.reset_index(drop=True, inplace=True)
-    with open(output_path / "rto.pkl", "wb") as f:
-        pickle.dump(val_cnt.index, f)
-    for rto in val_cnt.index:
-        df[rto] = [0 for i in range(df.shape[0])]
-    for rto in val_cnt.index:
-        for i in range(df.shape[0]):
-            if rto == df.loc[i, "RTO "]:
-                df.loc[i, rto] = 1
+    
 
     # seats
     df["Seats "] = df["Seats "].apply(lambda x: int(x.replace("Seats", "").strip()))
@@ -226,75 +207,13 @@ def clean_data(output_path, min_rto_count, min_model_count):
     # no of owners
     df["No of owners"] = df["Ownership "].apply(transform_owner)
 
-    # companies
-    companies = []
-    for i in df["company_name"].values:
-        companies.append(i)
-    companies = list(set(companies))
-
-    # for streamlit webapp
-    with open(output_path / "companies.pkl", "wb") as f:
-        pickle.dump(companies, f)
-    for comp in companies:
-        df[comp] = [0 for i in range(df.shape[0])]
-
-    for comp in companies:
-        for i in range(df.shape[0]):
-            if comp == df.loc[i, "company_name"]:
-                df.loc[i, comp] = 1
-
-    # models
-    models = {}
-    for i in df["model_detail"].values:
-        models[i] = models.get(i, 0) + 1
-
-    major_models = ["other_model"]
-    for model in models.keys():
-        if models[model] > min_model_count:
-            major_models.append(model)
-
-    # for streamlit webapp
-    with open(output_path / "car_models.pkl", "wb") as f:
-        pickle.dump(major_models, f)
-    for model in major_models:
-        df[model] = [0 for i in range(df.shape[0])]
-    df["other_model"] = [0 for i in range(df.shape[0])]
-
-    for model in major_models:
-        for i in range(df.shape[0]):
-            if model == df.loc[i, "model_detail"]:
-                df.loc[i, model] = 1
-            else:
-                df.loc[i, "other_model"] = 1
-
-    # other features
-    df["other_features"] = df["other_features"].apply(ast.literal_eval)
-    add_features = []
-    for i in df["other_features"].values:
-        add_features += i
-    add_features = list(set(add_features))
-
-    # for streamlit webapp
-    with open(output_path / "add_features.pkl", "wb") as f:
-        pickle.dump(add_features, f)
-    for feature in add_features:
-        df[feature] = [0 for i in range(df.shape[0])]
-    for feature in add_features:
-        for i in range(df.shape[0]):
-            if feature in df.loc[i, "other_features"]:
-                df.loc[i, feature] = 1
 
     df.drop(
         columns=[
-            "Registration Year ",
-            "Year of Manufacture ",
-            "Kms Driven ",
-            "RTO ",
-            "other_features",
             "Ownership ",
-            "company_name",
-            "model_detail",
-            'vehical_name'
+            'vehical_name',
+            "Transmission .1",
+            "Engine Displacement "
         ],
         axis=1,
         inplace=True,
@@ -311,15 +230,12 @@ def main():
 
     data_path = home_dir / "data" / "raw" / "car_details.csv"
     output_path = home_dir / "data" / "processed"
-    params = None
-    with open(home_dir / "params.yaml", "r") as f:
-        params = yaml.safe_load(f)["cleaning"]
 
     global df
     df = load_data(data_path)
 
     output_path.mkdir(parents=True, exist_ok=True)
-    clean_data(output_path, params["min_rto_count"], params["min_model_count"])
+    clean_data(output_path)
     save_data(output_path)
 
 

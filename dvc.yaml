@@ -3,9 +3,6 @@ stages:
     cmd: python .\second_hand_car_price_prediction\0_cleaning.py
     deps:
     - .\second_hand_car_price_prediction\0_cleaning.py
-    params:
-    - cleaning.min_rto_count
-    - cleaning.min_model_count
     outs:
     - .\data\processed\
 
@@ -16,6 +13,8 @@ stages:
     params:
     - transformation.discretize
     - transformation.standardise
+    - transformation.min_rto_count
+    - transformation.min_model_count
     outs:
     - .\data\transformed\
 

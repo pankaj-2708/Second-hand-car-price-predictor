@@ -15,16 +15,27 @@ def load_data(file_path):
     return pd.read_csv(file_path)
 
 
-def try_models(X,y):
+def try_models(X,y,test_path):
     for name, model in [
             ("xgboost", xgb.XGBRegressor()),
             ("random_forest", RandomForestRegressor()),
             ("gradient_boosting", GradientBoostingRegressor())
         ]:
-            mean_score = cross_val_score(model, X, y, cv=5, n_jobs=-1).mean()
-            with mlflow.start_run(run_name=name, nested=True):
-                mlflow.log_param("model", name)
-                mlflow.log_metric("cross_val_score_metric", mean_score)
+            with mlflow.start_run():
+                mlflow.log_param('model',name)
+                
+                test=pd.read_csv(test_path)
+                test_X = test.drop(columns="target")
+                test_y = test["target"]
+                
+                model_=model
+                
+                model_.fit(X,y)
+                pred_y=model_.predict(test_X)
+                
+                mlflow.log_metric('r2_score',r2_score(test_y,pred_y))
+                mlflow.log_metric('mse',mean_squared_error(test_y,pred_y))
+                mlflow.log_metric('mae',mean_absolute_error(test_y,pred_y))
 
 
 def objective1(trial):
@@ -218,7 +229,7 @@ def main():
     y = df["target"]
 
     if params["try_model"]:
-        try_models(X,y)
+        try_models(X,y,test_path)
         
     if params['tune_gradient_boosting']:
         tune_gradient_boosting(X,y,test_path)

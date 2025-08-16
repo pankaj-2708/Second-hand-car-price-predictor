@@ -2,16 +2,14 @@ dataset:
   test_size: 0.1
   random_state: 42
 
-cleaning:
-  min_rto_count: 21
-  min_model_count: 10
-
 transformation:
-  discretize: True
+  discretize: False
   standardise: True
+  min_rto_count: 0
+  min_model_count: 10
 
 model:
   try_model: False
-  tune_gradient_boosting: True
-  tune_random_forest: True
-  tune_XGBoost: True
+  tune_gradient_boosting: False
+  tune_random_forest: False
+  tune_XGBoost: False
