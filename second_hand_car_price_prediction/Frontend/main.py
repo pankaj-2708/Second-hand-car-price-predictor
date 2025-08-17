@@ -12,25 +12,25 @@ st.set_page_config(layout="wide", page_title="Second hand car price predictor")
 
 st.title("Second hand car price predictor")
 
-with open("../../data/frontend/insurance_values.pkl",'rb') as f:
+with open("./deps/insurance_values.pkl",'rb') as f:
     insurance_values=pickle.load(f)
     
-with open("../../data/frontend/fuel_types.pkl",'rb') as f:
+with open("./deps/fuel_types.pkl",'rb') as f:
     Fuel_types=pickle.load(f)
     
-with open("../../data/frontend/transmission_values.pkl",'rb') as f:
+with open("./deps/transmission_values.pkl",'rb') as f:
     transmission_values=pickle.load(f)
     
-with open("../../data/transformed/companies.pkl",'rb') as f:
+with open("./deps/companies.pkl",'rb') as f:
     companies=pickle.load(f)
     
-with open("../../data/transformed/car_models.pkl",'rb') as f:
+with open("./deps/car_models.pkl",'rb') as f:
     models=pickle.load(f)
     
-with open("../../data/transformed/add_features.pkl",'rb') as f:
+with open("./deps/add_features.pkl",'rb') as f:
     additional_features=pickle.load(f)
     
-with open("../../data/transformed/rto.pkl",'rb') as f:
+with open("./deps/rto.pkl",'rb') as f:
     rtos=pickle.load(f)
 
 
@@ -59,10 +59,10 @@ with cols[2]:
     power_in_bhp=st.number_input("Power in Bhp",value=0.00,step=0.1,min_value=0.00)
 
 with cols[3]:
-    additional_features=st.multiselect("Additional Features",additional_features)
     new_vehical_price=st.number_input("New vehical price(in lacs)",min_value=0.0,step=0.1)
     mileage=st.number_input("Mileage in km/l or km/kg",min_value=0.0,step=0.1)
     n_owners=st.number_input("No of owners",min_value=1,step=1)
+    additional_features=st.multiselect("Additional Features",additional_features)
     
 
 df=pd.DataFrame({
@@ -87,7 +87,7 @@ df=pd.DataFrame({
 
 predict=st.button("Predict")
 if predict:
-    with open("../Final_Pipeline/ppl.pkl",'rb') as f:
+    with open("./deps/ppl.pkl",'rb') as f:
         ppl=cloudpickle.load(f)
         
     tranformed_X=ppl.predict(df)
