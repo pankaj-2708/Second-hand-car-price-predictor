@@ -1,10 +1,95 @@
-# Second_hand_car_price_prediction
+# 🚗 Second-hand Car Price Predictor
 
-<a target="_blank" href="https://cookiecutter-data-science.drivendata.org/">
-    <img src="https://img.shields.io/badge/CCDS-Project%20template-328F97?logo=cookiecutter" />
-</a>
+An interactive machine learning web app that **predicts the resale value
+of a used car** based on **16 different inputs** provided by the user.\
+The app is built for easy use by anyone --- just enter details like
+brand, model, year, mileage, fuel type, etc., and instantly get the
+predicted market value.
 
-A short description of the project.
+------------------------------------------------------------------------
+
+## ✨ Features
+
+-   📊 Predicts the **resale price of a second-hand car** with ML
+    models\
+-   🖥️ User-friendly **Streamlit interface**\
+-   🔄 End-to-end **ML pipeline** (data preprocessing → training →
+    evaluation → prediction)\
+-   📦 Experiment tracking with **MLflow**\
+-   📂 Versioning of datasets & models using **DVC (Data Version
+    Control)**\
+-   🛠️ Structured using **Cookiecutter Data Science** template\
+-   ⚡ Built on top of **scikit-learn** with pipelines and preprocessing
+
+------------------------------------------------------------------------
+
+## 🚀 Live Demo
+
+[🔗 **Click here to try the app**](https://second-hand-car-price-predictor-qhpy2ulq94r8bvwkwcciwr.streamlit.app)
+
+------------------------------------------------------------------------
+
+## 🛠️ Tech Stack
+
+-   **Frontend/UI:** Streamlit\
+-   **Modeling & ML:** scikit-learn\
+-   **Experiment Tracking:** MLflow\
+-   **Data & Model Versioning:** DVC\
+-   **Project Structure:** Cookiecutter Data Science\
+-   **Language:** Python 3.10+
+
+------------------------------------------------------------------------
+
+## ⚙️ Installation & Setup
+
+Clone the repository:
+
+``` bash
+git clone https://github.com/pankaj-2708/Second-hand-car-price-predictor.git
+cd Second-hand-car-price-predictor
+```
+
+Install dependencies:
+
+``` bash
+pip install -r requirements.txt
+```
+
+Run the Streamlit app:
+
+``` bash
+streamlit run ./second_hand_car_price_prediction/Frontend/main.py
+```
+
+------------------------------------------------------------------------
+
+## 📈 Workflow
+
+1.  **Data Collection** -- Gather car price dataset\
+2.  **Feature Engineering** -- Process 16 input features\
+3.  **Model Training** -- Train ML models with scikit-learn\
+4.  **Experiment Tracking** -- Log experiments in MLflow\
+5.  **Versioning** -- Track datasets and models with DVC\
+6.  **Deployment** -- Expose via Streamlit app
+
+------------------------------------------------------------------------
+
+## 🤝 Contributing
+
+Contributions are welcome! If you'd like to improve the app: 1. Fork the
+repo\
+2. Create a new branch (`feature-new`)\
+3. Commit your changes\
+4. Open a Pull Request
+
+------------------------------------------------------------------------
+
+## 📬 Contact
+
+Created with ❤️ by **[pankaj-2708](https://github.com/pankaj-2708)**\
+Feel free to open issues or suggestions in the repository.
+
+------------------------------------------------------------------------
 
 ## Project Organization
 
