@@ -11,3 +11,4 @@ PyYAML
 scikit_learn
 streamlit
 xgboost
+gdown
