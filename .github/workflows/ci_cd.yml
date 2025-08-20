@@ -29,6 +29,10 @@ jobs:
           run:
             dvc exp run
         
+            # cml part . cml stands for continious machine learning
         - name: creating report
-          run:
+          env:
+            REPO_TOKEN: ${{secrets.Github_token}}
+          run: |
             python ./second_hand_car_price_prediction/generate_report.py
+            cml comment create report.md
