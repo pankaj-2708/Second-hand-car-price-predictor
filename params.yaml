@@ -9,7 +9,7 @@ transformation:
   min_model_count: 10
 
 model:
-  try_model: False
+  try_model: True
   tune_gradient_boosting: False
   tune_random_forest: False
   tune_XGBoost: False
