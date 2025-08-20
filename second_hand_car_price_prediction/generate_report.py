@@ -20,4 +20,3 @@ with open(report_path, 'w') as f:
     for col in runs.columns:
         f.write(f"- **{col}**: {best_run[col]}\n")
 
-print(f"Report saved to {report_path}")

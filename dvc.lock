@@ -1,14 +1,14 @@
 schema: '2.0'
 stages:
   cleaning:
-    cmd: python .\second_hand_car_price_prediction\0_cleaning.py
+    cmd: python ./second_hand_car_price_prediction/0_cleaning.py
     deps:
-    - path: .\second_hand_car_price_prediction\0_cleaning.py
+    - path: ./second_hand_car_price_prediction/0_cleaning.py
       hash: md5
       md5: 6a33cbd1ba651f8e58e20ede551c477f
       size: 7516
     outs:
-    - path: .\data\processed\
+    - path: ./data/processed/
       hash: md5
       md5: 43acec082667be28ef33c98982fba573.dir
       size: 1643659

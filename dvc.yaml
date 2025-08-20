@@ -1,39 +1,39 @@
 stages:
   cleaning:
-    cmd: python .\second_hand_car_price_prediction\0_cleaning.py
+    cmd: python ./second_hand_car_price_prediction/0_cleaning.py
     deps:
-    - .\second_hand_car_price_prediction\0_cleaning.py
+    - ./second_hand_car_price_prediction/0_cleaning.py
     outs:
-    - .\data\processed\
+    - ./data/processed/
 
   transformation:
-    cmd: python .\second_hand_car_price_prediction\1_transformation.py
+    cmd: python ./second_hand_car_price_prediction/1_transformation.py
     deps:
-    - .\second_hand_car_price_prediction\1_transformation.py
+    - ./second_hand_car_price_prediction/1_transformation.py
     params:
     - transformation.discretize
     - transformation.standardise
     - transformation.min_rto_count
     - transformation.min_model_count
     outs:
-    - .\data\transformed\
+    - ./data/transformed/
 
 
   dataset:
-    cmd: python .\second_hand_car_price_prediction\2_dataset.py
+    cmd: python ./second_hand_car_price_prediction/2_dataset.py
     deps:
-    - .\second_hand_car_price_prediction\2_dataset.py
+    - ./second_hand_car_price_prediction/2_dataset.py
 
     params:
     - dataset.test_size
     - dataset.random_state
     outs:
-    - .\data\train_test_split\
+    - ./data/train_test_split/
 
   model:
-    cmd: python .\second_hand_car_price_prediction\3_model.py
+    cmd: python ./second_hand_car_price_prediction/3_model.py
     deps:
-    - .\second_hand_car_price_prediction\3_model.py
+    - ./second_hand_car_price_prediction/3_model.py
 
     params:
     - model.try_model
