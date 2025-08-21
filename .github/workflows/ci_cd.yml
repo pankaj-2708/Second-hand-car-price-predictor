@@ -10,7 +10,9 @@ jobs:
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v3
-
+        
+        - name: set up cml
+          uses: iterative/setup-cml@v2
         - name: Set up Python
           uses: actions/setup-python@v4
           with:
