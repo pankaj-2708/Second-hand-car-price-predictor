@@ -13,3 +13,4 @@ scikit_learn
 streamlit
 xgboost
 dvc
+cml
