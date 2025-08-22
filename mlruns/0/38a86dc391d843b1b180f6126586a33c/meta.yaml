@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/38a86dc391d843b1b180f6126586a33c/artifacts
+end_time: 1755867216563
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 38a86dc391d843b1b180f6126586a33c
+run_name: redolent-stag-719
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755867205085
+status: 3
+tags: []
+user_id: panka

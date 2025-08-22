@@ -108,6 +108,17 @@ def apply_transformation(df, desc, std,output_path, min_rto_count, min_model_cou
         for i in range(df.shape[0]):
             if feature in df.loc[i, "other_features"]:
                 df.loc[i, feature] = 1
+    with open(output_path / "fuel_types.pkl", "wb") as f:
+        pickle.dump(add_features, f)
+        
+    with open(output_path / "insurance_values.pkl", "wb") as f:
+        pickle.dump(df['Insurance '].values, f)
+        
+    with open(output_path / "fuel_types.pkl", "wb") as f:
+        pickle.dump(df['Fuel Type '].values, f)
+
+    with open(output_path / "transmission_values.pkl", "wb") as f:
+        pickle.dump(df['Transmission '].values, f)
     
     df.drop(
         columns=[

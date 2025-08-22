@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/ec6d90e583fb4c3f8944ba1e4684d0f6/artifacts
+end_time: 1755867179636
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: ec6d90e583fb4c3f8944ba1e4684d0f6
+run_name: grandiose-wren-807
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755867178051
+status: 3
+tags: []
+user_id: panka

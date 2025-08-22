@@ -161,11 +161,11 @@ ppl = Pipeline(
     ]
 )
 
-df=pd.read_csv('../../data/processed/cleaned.csv')
+df=pd.read_csv('./data/processed/cleaned.csv')
 
 df.columns = df.columns.astype(str)
 X=df.drop(columns=["vehical_price_in_lakh_inr"],axis=1)
 y=df['vehical_price_in_lakh_inr']
 ppl.fit(X,y)
-with open('ppl.pkl',"wb") as f:
+with open('./data/transformed/ppl.pkl',"wb") as f:
     cloudpickle.dump(ppl,f)

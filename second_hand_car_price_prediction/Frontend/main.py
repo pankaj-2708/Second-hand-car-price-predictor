@@ -12,25 +12,25 @@ st.set_page_config(layout="wide", page_title="Second hand car price predictor")
 
 st.title("Second hand car price predictor")
 
-with open("./second_hand_car_price_prediction/Frontend/deps/insurance_values.pkl",'rb') as f:
+with open("./data/transformed/insurance_values.pkl",'rb') as f:
     insurance_values=pickle.load(f)
     
-with open("./second_hand_car_price_prediction/Frontend/deps/fuel_types.pkl",'rb') as f:
+with open("./data/transformed/fuel_types.pkl",'rb') as f:
     Fuel_types=pickle.load(f)
     
-with open("./second_hand_car_price_prediction/Frontend/deps/transmission_values.pkl",'rb') as f:
+with open("./data/transformed/transmission_values.pkl",'rb') as f:
     transmission_values=pickle.load(f)
     
-with open("./second_hand_car_price_prediction/Frontend/deps/companies.pkl",'rb') as f:
+with open("./data/transformed/companies.pkl",'rb') as f:
     companies=pickle.load(f)
     
-with open("./second_hand_car_price_prediction/Frontend/deps/car_models.pkl",'rb') as f:
+with open("./data/transformed/car_models.pkl",'rb') as f:
     models=pickle.load(f)
     
-with open("./second_hand_car_price_prediction/Frontend/deps/add_features.pkl",'rb') as f:
+with open("./data/transformed/add_features.pkl",'rb') as f:
     additional_features=pickle.load(f)
     
-with open("./second_hand_car_price_prediction/Frontend/deps/rto.pkl",'rb') as f:
+with open("./data/transformed/rto.pkl",'rb') as f:
     rtos=pickle.load(f)
 
 
@@ -87,7 +87,7 @@ df=pd.DataFrame({
 
 predict=st.button("Predict")
 if predict:
-    with open("./second_hand_car_price_prediction/Frontend/deps/ppl.pkl",'rb') as f:
+    with open("./data/transformed/ppl.pkl",'rb') as f:
         ppl=cloudpickle.load(f)
         
     tranformed_X=ppl.predict(df)
