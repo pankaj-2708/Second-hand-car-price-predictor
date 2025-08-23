@@ -21,7 +21,7 @@ def try_models(X,y,test_path):
             ("xgboost", xgb.XGBRegressor()),
             ("random_forest", RandomForestRegressor()),
             ("gradient_boosting", GradientBoostingRegressor()),
-            ('lgm',LGBMRegressor(boosting_type='goss',device='gpu')),
+            ('lgm',LGBMRegressor(boosting_type='goss')),
             ('cbr',CatBoostRegressor())
         ]:
             with mlflow.start_run():
