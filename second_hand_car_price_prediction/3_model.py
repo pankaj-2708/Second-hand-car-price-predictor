@@ -18,9 +18,9 @@ def load_data(file_path):
 
 def try_models(X,y,test_path):
     for name, model in [
-            # ("xgboost", xgb.XGBRegressor()),
-            # ("random_forest", RandomForestRegressor()),
-            # ("gradient_boosting", GradientBoostingRegressor()),
+            ("xgboost", xgb.XGBRegressor()),
+            ("random_forest", RandomForestRegressor()),
+            ("gradient_boosting", GradientBoostingRegressor()),
             ('lgm',LGBMRegressor(boosting_type='goss',device='gpu')),
             ('cbr',CatBoostRegressor())
         ]:
