@@ -14,3 +14,4 @@ PyYAML==6.0.2
 scikit_learn==1.7.1
 streamlit==1.48.1
 xgboost==3.0.4
+dvc
