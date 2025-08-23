@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/3bcc2738f42744a79264ea4f8fe8b79f/artifacts
+end_time: 1755965518336
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3bcc2738f42744a79264ea4f8fe8b79f
+run_name: fearless-quail-765
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755965510645
+status: 3
+tags: []
+user_id: panka

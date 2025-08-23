@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/704d1ce11e1b45a496fe7c824c3ae3c8/artifacts
+end_time: 1755965510636
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 704d1ce11e1b45a496fe7c824c3ae3c8
+run_name: bald-roo-800
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755965509723
+status: 3
+tags: []
+user_id: panka

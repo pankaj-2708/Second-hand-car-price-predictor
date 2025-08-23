@@ -40,6 +40,8 @@ stages:
     - model.tune_gradient_boosting
     - model.tune_random_forest
     - model.tune_XGBoost
+    - model.tune_light_boost
+    
 params:
 - dvclive/params.yaml
 metrics:

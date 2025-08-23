@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/20f49f15bba946e99b9f76d02fe2b2fa/artifacts
+end_time: 1755965678700
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 20f49f15bba946e99b9f76d02fe2b2fa
+run_name: unruly-shark-619
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755965665904
+status: 3
+tags: []
+user_id: panka

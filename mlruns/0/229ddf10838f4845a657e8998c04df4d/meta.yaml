@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/229ddf10838f4845a657e8998c04df4d/artifacts
+end_time: 1755965509715
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 229ddf10838f4845a657e8998c04df4d
+run_name: illustrious-boar-962
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755965496675
+status: 3
+tags: []
+user_id: panka

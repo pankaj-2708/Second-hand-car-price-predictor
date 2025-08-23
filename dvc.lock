@@ -5,8 +5,8 @@ stages:
     deps:
     - path: ./second_hand_car_price_prediction/0_cleaning.py
       hash: md5
-      md5: 6a33cbd1ba651f8e58e20ede551c477f
-      size: 7516
+      md5: ab2fa6c4a55a6cdef2ceeed8c47e63da
+      size: 7273
     outs:
     - path: ./data/processed/
       hash: md5
@@ -14,12 +14,12 @@ stages:
       size: 1643659
       nfiles: 1
   transformation:
-    cmd: python .\second_hand_car_price_prediction\1_transformation.py
+    cmd: python ./second_hand_car_price_prediction/1_transformation.py
     deps:
-    - path: .\second_hand_car_price_prediction\1_transformation.py
+    - path: ./second_hand_car_price_prediction/1_transformation.py
       hash: md5
-      md5: ef0f7827b8cc594f365418c8a5f5b2d2
-      size: 6880
+      md5: 4fb7a024787b962ec2a306a757108c65
+      size: 7341
     params:
       params.yaml:
         transformation.discretize: false
@@ -27,38 +27,39 @@ stages:
         transformation.min_rto_count: 0
         transformation.standardise: true
     outs:
-    - path: .\data\transformed\
+    - path: ./data/transformed/
       hash: md5
-      md5: 39b16236767646584350a178881eeee3.dir
-      size: 44409820
-      nfiles: 5
+      md5: d199f3bc08e0fac51997860b762a8f22.dir
+      size: 44470477
+      nfiles: 8
   dataset:
-    cmd: python .\second_hand_car_price_prediction\2_dataset.py
+    cmd: python ./second_hand_car_price_prediction/2_dataset.py
     deps:
-    - path: .\second_hand_car_price_prediction\2_dataset.py
+    - path: ./second_hand_car_price_prediction/2_dataset.py
       hash: md5
-      md5: 74e57ab632822dc77800bfb75c18fc7d
-      size: 1281
+      md5: 0667167d3697804b2edda7ca966752ea
+      size: 1234
     params:
       params.yaml:
         dataset.random_state: 42
         dataset.test_size: 0.1
     outs:
-    - path: .\data\train_test_split\
+    - path: ./data/train_test_split/
       hash: md5
-      md5: d4635ea9757865cd1ce02bdaa7c72de6.dir
-      size: 16827849
+      md5: a94d4209c59265bc4b2da27cccfb0813.dir
+      size: 44364634
       nfiles: 2
   model:
-    cmd: python .\second_hand_car_price_prediction\3_model.py
+    cmd: python ./second_hand_car_price_prediction/3_model.py
     deps:
-    - path: .\second_hand_car_price_prediction\3_model.py
+    - path: ./second_hand_car_price_prediction/3_model.py
       hash: md5
-      md5: 5bf04bc9e5a68f0627b73746193cf083
-      size: 8891
+      md5: fcb206aaef6a25388f3afa52de7ca62c
+      size: 11983
     params:
       params.yaml:
-        model.try_model: false
+        model.try_model: true
         model.tune_XGBoost: false
         model.tune_gradient_boosting: false
+        model.tune_light_boost: false
         model.tune_random_forest: false

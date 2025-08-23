@@ -13,3 +13,4 @@ model:
   tune_gradient_boosting: False
   tune_random_forest: False
   tune_XGBoost: False
+  tune_light_boost: False

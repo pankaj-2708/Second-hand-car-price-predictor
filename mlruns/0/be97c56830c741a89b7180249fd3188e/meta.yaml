@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/be97c56830c741a89b7180249fd3188e/artifacts
+end_time: 1755965496668
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: be97c56830c741a89b7180249fd3188e
+run_name: abrasive-sow-591
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755965468241
+status: 3
+tags: []
+user_id: panka

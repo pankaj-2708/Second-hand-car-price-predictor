@@ -1,0 +1,14 @@
+artifact_uri: file:///C:/Users/panka/ProjectsMl/second_hand_car_price_prediction/mlruns/0/3b23107273004023b31fab93a49d83f6/artifacts
+end_time: 1755965665892
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+run_id: 3b23107273004023b31fab93a49d83f6
+run_name: monumental-bear-622
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1755965622184
+status: 3
+tags: []
+user_id: panka
