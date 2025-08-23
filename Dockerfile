@@ -11,9 +11,9 @@ RUN pip install -r requirements.txt
 #copying rest of the code
 COPY ./data/transformed ./data/transformed
 COPY ./second_hand_car_price_prediction/Frontend ./second_hand_car_price_prediction/Frontend
-
+    
 #exposing port
 EXPOSE 8501 
 
-#command to start fast api application
+#command to start streamlit application
 CMD ["streamlit", "run" ,"./second_hand_car_price_prediction/Frontend/main.py","--server.port=8501", "--server.address=0.0.0.0"]

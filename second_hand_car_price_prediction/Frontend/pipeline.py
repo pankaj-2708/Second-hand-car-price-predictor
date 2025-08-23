@@ -23,13 +23,13 @@ class preprocess(BaseEstimator, TransformerMixin):
         pass
 
     def fit(self, X, y=None):
-        with open("../../data/transformed/rto.pkl",'rb') as f:
+        with open("./data/transformed/rto.pkl",'rb') as f:
             self.all_rto = pickle.load(f)
-        with open("../../data/transformed/companies.pkl",'rb') as f:
+        with open("./data/transformed/companies.pkl",'rb') as f:
             self.all_companies = pickle.load(f)
-        with open("../../data/transformed/car_models.pkl",'rb') as f:
+        with open("./data/transformed/car_models.pkl",'rb') as f:
             self.all_models = pickle.load(f)
-        with open("../../data/transformed/add_features.pkl",'rb') as f:
+        with open("./data/transformed/add_features.pkl",'rb') as f:
             self.add_features = pickle.load(f)
         return self
 
@@ -161,11 +161,12 @@ ppl = Pipeline(
     ]
 )
 
-df=pd.read_csv('./data/processed/cleaned.csv')
+if __name__=='main':
+    df=pd.read_csv('./data/processed/cleaned.csv')
 
-df.columns = df.columns.astype(str)
-X=df.drop(columns=["vehical_price_in_lakh_inr"],axis=1)
-y=df['vehical_price_in_lakh_inr']
-ppl.fit(X,y)
-with open('./data/transformed/ppl.pkl',"wb") as f:
-    cloudpickle.dump(ppl,f)
+    df.columns = df.columns.astype(str)
+    X=df.drop(columns=["vehical_price_in_lakh_inr"],axis=1)
+    y=df['vehical_price_in_lakh_inr']
+    ppl.fit(X,y)
+    with open('./data/transformed/ppl.pkl',"wb") as f:
+        pickle.dump(ppl,f)

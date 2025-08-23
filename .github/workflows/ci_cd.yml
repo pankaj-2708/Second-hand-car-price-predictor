@@ -40,3 +40,21 @@ jobs:
           run: |
             python ./second_hand_car_price_prediction/generate_report.py
             cml comment create report.md
+        
+        - name: upload transformed data
+          uses: actions/upload-artifact@v4
+          with:
+            name: transformed_data
+            path: ./data/transformed
+
+    build_image_and_push_to_ecr:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - uses: actions/checkout@v3
+          with:
+            name: transformed_data
+        
+        - name: build_docker_image
+          run:
+            docker build -t pankajmaulekhi/second_hand_car_price .

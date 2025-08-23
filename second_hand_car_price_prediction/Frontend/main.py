@@ -5,6 +5,7 @@ import dill
 import pandas as pd
 from datetime import datetime
 import warnings
+from pipeline import *
 import ast
 
 warnings.filterwarnings("ignore")
@@ -86,9 +87,14 @@ df=pd.DataFrame({
 
 
 predict=st.button("Predict")
-if predict:
+
+@st.cache_resource
+def load_ppl():
     with open("./data/transformed/ppl.pkl",'rb') as f:
-        ppl=cloudpickle.load(f)
+        return pickle.load(f)
+ppl=load_ppl()
+
+if predict:
         
     tranformed_X=ppl.predict(df)
     
