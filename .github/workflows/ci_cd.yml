@@ -5,7 +5,7 @@ on:
 
 jobs:
     build:
-        runs-on: ubuntu-latest
+        runs-on: hyperparameter
 
         steps:
         - name: Checkout Repository
@@ -82,7 +82,7 @@ jobs:
 
     deployment:
       needs: build_image_and_push_to_ecr
-      runs-on: ubuntu-latest
+      runs-on: price_predictor
       steps: 
         - name: Configure Aws credentials
           uses: aws-actions/configure-aws-credentials@v4
