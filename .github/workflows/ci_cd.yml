@@ -6,7 +6,8 @@ on:
 jobs:
     build:
         runs-on: hyperparameter
-
+        container:
+          image: ubuntu:22.04
         steps:
         - name: Checkout Repository
           uses: actions/checkout@v3
